@@ -3,8 +3,17 @@ import { words } from "../constants";
 import Button from "../components/Button";
 import HeroExperience from "../components/HeroModels/HeroExperience";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import AnimatedCounter from "../components/AnimatedCounter";
 
 const Hero = () => {
+  useGSAP(() => {
+    gsap.fromTo(
+      ".hero-text h1",
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.2, duration: 5, ease: "power2.InOut" }
+    );
+  });
   return (
     <section id='hero' className='relative overflow-hidden'>
       <div className='absolute to-0 left-0 z-10'>
@@ -53,6 +62,7 @@ const Hero = () => {
           </div>
         </figure>
       </div>
+      <AnimatedCounter />
     </section>
   );
 };
